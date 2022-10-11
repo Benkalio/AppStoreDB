@@ -13,7 +13,7 @@
 
 <body>
 
-  <h1>Register</h1>
+  <h1>Login</h1>
 
   <div class="container">
 
@@ -37,20 +37,27 @@
     </div>
   </nav>
 
-  <form action='/register' method="POST">
-    <div class="form-group">
-      <label for="exampleInputEmail1">User Name</label>
-      <input type="text" name="username" class="form-control" placeholder="Enter user name">
 
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" name="password" class="form-control" placeholder="Password">
-    </div>
+  <form action='/login' method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">User Name</label>
+    <input type="text" name="username" class="form-control" placeholder="Enter user name">
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-    
-  </form>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" placeholder="Password">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+  {{#message}}
+    <div class="alert alert-danger" role="alert">
+        {{message}}
+    </div>
+  {{/message}}
+
+</form>
 
 </div>
 
