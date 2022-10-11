@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const pgp = require('pg-promise')();
 const bcrypt = require('bcrypt');
 const session = require('express-session');
+const path = require('path');
 
 const PORT = 4000;
 const CONNECTION_STRING = "postgres://localhost:5432/appdb";
@@ -12,8 +13,11 @@ const CONNECTION_STRING = "postgres://localhost:5432/appdb";
 // FOR SALTING AND HASHING USER PASSWORDS
 const SALT_ROUNDS = 10;
 
-app.engine('mustache', mustacheExpress())
-app.set('views', './views')
+// WHERE TO FIND THE PARTIALS FOR MUSTACHE 
+const VIEWS_PATH = path.join(__dirname, '/views')
+
+app.engine('mustache', mustacheExpress(VIEWS_PATH + '/partials', '.mustache'))
+app.set('views', VIEWS_PATH)
 app.set('view engine', 'mustache');
 
 // REGISTER SESSION MIDDLEWARE 
